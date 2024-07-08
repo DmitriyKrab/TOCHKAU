@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СИМУЛЯТОР УПРАВЛЕНИЯ ТОЧКОЙ У</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            cursor: url('cursor.png'), auto;
+        }
+
+        .gif {
+            position: absolute;
+            display: none;
+            transform: translate(-50%, -50%);
+            pointer-events: none; /* Disable pointer events for the GIF */
+        }
+    </style>
+</head>
+<body>
+    <img id="gif" class="gif" src="animation.gif" alt="Gif">
+
+    <script>
+        document.addEventListener('click', function(event) {
+            var gif = document.getElementById('gif');
+            
+            // Позиционирование GIF по центру курсора
+            gif.style.left = event.pageX + 'px';
+            gif.style.top = event.pageY + 'px';
+
+            // Отображение GIF
+            gif.style.display = 'block';
+
+            // Воспроизведение звука
+            var sound = new Audio('sound.mp3');
+            sound.play();
+
+            // Скрытие GIF через 2 секунды
+            setTimeout(function() {
+                gif.style.display = 'none';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
